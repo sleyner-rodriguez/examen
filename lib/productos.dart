@@ -23,20 +23,16 @@ class ProductoFresco extends Producto {
         );
 }
 
-class ProductoRefrigerado extends ProductoFresco {
+class ProductoRefrigerado extends Producto {
   String organismCode;
   String suitableTemperature;
 
   ProductoRefrigerado(
-    String? packingDate,
-    String? originCounrty,
     this.organismCode,
     this.suitableTemperature, {
      String? dateExpiry,
      String? numberLote,
   }) : super(
-          packingDate,
-          originCounrty,
           dateExpiry: dateExpiry,
           numberLote: numberLote,
         );
@@ -75,6 +71,36 @@ class ProductoCongeladoPorAire extends ProductoCongelado {
       this.waterVaporComposition,
       { String? dateExpiry,
        String? numberLote})
+      : super(
+          packingDate,
+          originCounrty,
+          suitableTemperature,
+          dateExpiry: dateExpiry,
+          numberLote: numberLote,
+        );
+}
+
+class ProductoCongeladoPorAgua extends ProductoCongelado {
+  String salinity;
+  ProductoCongeladoPorAgua(String? packingDate, String? originCounrty,
+      String? suitableTemperature, this.salinity,
+      {String? dateExpiry, String? numberLote})
+      : super(
+          packingDate,
+          originCounrty,
+          suitableTemperature,
+          dateExpiry: dateExpiry,
+          numberLote: numberLote,
+        );
+}
+
+class ProductoCongeladoPorNitrogeno extends ProductoCongelado {
+  String? nitrogenFreezingMethod;
+  String? exhibithionTime;
+
+  ProductoCongeladoPorNitrogeno(String? packingDate, String? originCounrty,
+      String suitableTemperature, this.nitrogenFreezingMethod, this.exhibithionTime,
+      { String? dateExpiry, String? numberLote})
       : super(
           packingDate,
           originCounrty,
